@@ -5,7 +5,7 @@
 
 # from sqlalchemy import create_engine, MetaData, Table, select
 
-# #testing
+# #testingyyy
 # DATABASE_URL = "postgresql+psycopg2://fastapiuser:fastapi37811@localhost:5432/fastapidb"
 # #production
 # # DATABASE_URL = "postgresql+psycopg2://ufo30bm52onkok:pd17fb510bee0d9e5ee2defb9a9d002afeaeead55b9e9a80478940f8b8d039737@c6oob9dspeco5.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d9lpb17qpeanjp"
