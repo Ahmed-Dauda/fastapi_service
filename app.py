@@ -1,27 +1,27 @@
 from fastapi import FastAPI
-import asyncio
+from sqlalchemy import create_engine, MetaData, Table, select
+
 app = FastAPI()
 
 
-@app.get("/")
+
+@app.get("/test")
 async def root():
     return {"message": "Hello World 222"}
 
-@app.get("/slow")
-async def slow():
-    await asyncio.sleep(3)
-    return {"message": "Done after 3 seconds"}
+
+@app.get("/items/{item_id}")
+async def read_item(item_id: int):
+    return {"item_id": item_id}
 
 
+# Testing
+# DATABASE_URL = "postgresql+psycopg2://fastapiuser:fastapi37811@localhost:5432/fastapidb"
+# Production
+DATABASE_URL = "postgresql+psycopg2://ufo30bm52onkok:pd17fb510bee0d9e5ee2defb9a9d002afeaeead55b9e9a80478940f8b8d039737@c6oob9dspeco5.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d9lpb17qpeanjp"
 
-from fastapi import FastAPI
-from sqlalchemy import create_engine, MetaData, Table, select
-
-DATABASE_URL = "postgresql+psycopg2://fastapiuser:fastapi37811@localhost:5432/fastapidb"
 engine = create_engine(DATABASE_URL)
 metadata = MetaData()
-
-app = FastAPI()
 
 @app.get("/api/program-pages")
 async def get_program_pages():
@@ -36,7 +36,7 @@ async def get_program_pages():
                 "subtitle": row.subtitle,
                 "description": row.description,
                 "cta_text": row.cta_text,
-                "benefits": row.benefits
+                "benefits": row.benefits,
             }
             for row in result.fetchall()
         ]
