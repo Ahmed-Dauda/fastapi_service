@@ -33,9 +33,7 @@ async def get_program_pages():
             {
                 "id": row.id,
                 "title": row.title,
-                "subtitle": row.subtitle,
                 "description": row.description,
-                "cta_text": row.cta_text,
                 "benefits": row.benefits,
             }
             for row in result.fetchall()
