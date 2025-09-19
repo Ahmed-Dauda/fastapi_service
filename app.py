@@ -5,11 +5,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 # Testing
-# DATABASE_URL = "postgresql+asyncpg://fastapiuser:fastapi37811@localhost:5432/fastapidb"
+#DATABASE_URL = "postgresql+asyncpg://fastapiuser:fastapi37811@localhost:5432/fastapidb"
 # Production
-# DATABASE_URL = "postgresql+psycopg2://ufo30bm52onkok:pd17fb510bee0d9e5ee2defb9a9d002afeaeead55b9e9a80478940f8b8d039737@c6oob9dspeco5.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d9lpb17qpeanjp"
-DATABASE_URL = "postgresql+asyncpg://ufo30bm52onkok:pd17fb510bee0d9e5ee2defb9a9d002afeaeead55b9e9a80478940f8b8d039737@c6oob9dspeco5.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d9lpb17qpeanjp"
 
+DATABASE_URL = "postgresql+asyncpg://ufo30bm52onkok:pd17fb510bee0d9e5ee2defb9a9d002afeaeead55b9e9a80478940f8b8d039737@c6oob9dspeco5.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d9lpb17qpeanjp"
 
 
 engine = create_async_engine(DATABASE_URL, echo=True)
@@ -39,12 +38,14 @@ async def get_program_pages():
 
 @app.get("/test")
 async def root():
-    return {"message": "Hello World. learners"}
+    return {
+        "message": "codethinkers academy2"
+        }
 
 
-@app.get("/items/{item_id}")
-async def read_item(item_id: int):
-    return {"item_id": item_id}
+@app.get("/items")
+async def read_item():
+    return {"items": "new item"}
 
 
 origins = [
